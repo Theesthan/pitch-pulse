@@ -1,0 +1,4 @@
+project_id = "cjzlrsklvyomltsvdtwe"
+
+[functions.fetch-sec-data]
+verify_jwt = false

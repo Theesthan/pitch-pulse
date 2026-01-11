@@ -1,0 +1,256 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* PitchPulse - Dark Fintech Design System
+   Professional dark theme with glassy cards, subtle gradients, and modern fintech aesthetics
+   All colors in HSL format for Tailwind compatibility
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@layer base {
+  :root {
+    /* Core backgrounds - Deep navy/charcoal */
+    --background: 222 47% 5%;
+    --foreground: 210 40% 98%;
+
+    /* Card surfaces - Slightly elevated */
+    --card: 222 47% 7%;
+    --card-foreground: 210 40% 98%;
+
+    /* Popover/dropdown surfaces */
+    --popover: 222 47% 8%;
+    --popover-foreground: 210 40% 98%;
+
+    /* Primary - Electric blue accent */
+    --primary: 217 91% 60%;
+    --primary-foreground: 222 47% 5%;
+
+    /* Secondary - Muted slate */
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 210 40% 90%;
+
+    /* Muted - Subdued elements */
+    --muted: 217 33% 12%;
+    --muted-foreground: 215 20% 55%;
+
+    /* Accent - Teal/cyan for highlights */
+    --accent: 185 84% 45%;
+    --accent-foreground: 222 47% 5%;
+
+    /* Destructive - Warning red */
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 210 40% 98%;
+
+    /* Success - Green for approved states */
+    --success: 142 76% 36%;
+    --success-foreground: 210 40% 98%;
+
+    /* Warning - Amber for pending states */
+    --warning: 45 93% 47%;
+    --warning-foreground: 222 47% 5%;
+
+    /* Borders and inputs */
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 217 91% 60%;
+
+    /* Radius */
+    --radius: 0.75rem;
+
+    /* Sidebar - Slightly different shade for depth */
+    --sidebar-background: 222 47% 6%;
+    --sidebar-foreground: 210 40% 90%;
+    --sidebar-primary: 217 91% 60%;
+    --sidebar-primary-foreground: 222 47% 5%;
+    --sidebar-accent: 217 33% 14%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 217 33% 15%;
+    --sidebar-ring: 217 91% 60%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(217 91% 60%), hsl(185 84% 45%));
+    --gradient-card: linear-gradient(180deg, hsl(222 47% 8%), hsl(222 47% 6%));
+    --gradient-surface: linear-gradient(135deg, hsl(222 47% 9% / 0.8), hsl(222 47% 6% / 0.9));
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 hsl(222 47% 3% / 0.5);
+    --shadow-md: 0 4px 6px -1px hsl(222 47% 3% / 0.5), 0 2px 4px -2px hsl(222 47% 3% / 0.5);
+    --shadow-lg: 0 10px 15px -3px hsl(222 47% 3% / 0.5), 0 4px 6px -4px hsl(222 47% 3% / 0.5);
+    --shadow-glow: 0 0 20px -5px hsl(217 91% 60% / 0.3);
+
+    /* Glass effect */
+    --glass-bg: hsl(222 47% 8% / 0.7);
+    --glass-border: hsl(217 33% 20% / 0.5);
+  }
+
+  /* Light mode - minimal, same dark aesthetic */
+  .light {
+    --background: 222 47% 5%;
+    --foreground: 210 40% 98%;
+    --card: 222 47% 7%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222 47% 8%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217 91% 60%;
+    --primary-foreground: 222 47% 5%;
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 210 40% 90%;
+    --muted: 217 33% 12%;
+    --muted-foreground: 215 20% 55%;
+    --accent: 185 84% 45%;
+    --accent-foreground: 222 47% 5%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 217 91% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--border));
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--muted-foreground));
+  }
+}
+
+@layer components {
+  /* Glass card effect */
+  .glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Glow effect on hover */
+  .glow-hover {
+    transition: box-shadow 0.3s ease;
+  }
+
+  .glow-hover:hover {
+    box-shadow: var(--shadow-glow);
+  }
+
+  /* Status badges */
+  .status-draft {
+    @apply bg-muted text-muted-foreground;
+  }
+
+  .status-pending {
+    background: hsl(var(--warning) / 0.15);
+    color: hsl(var(--warning));
+  }
+
+  .status-approved {
+    background: hsl(var(--success) / 0.15);
+    color: hsl(var(--success));
+  }
+
+  .status-rejected {
+    background: hsl(var(--destructive) / 0.15);
+    color: hsl(var(--destructive));
+  }
+
+  /* Monospace for data */
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* Print styles */
+  @media print {
+    .no-print {
+      display: none !important;
+    }
+
+    .print-only {
+      display: block !important;
+    }
+
+    body {
+      background: white !important;
+      color: black !important;
+    }
+
+    .glass-card {
+      background: white !important;
+      border: 1px solid #e5e7eb !important;
+    }
+  }
+}
+
+@layer utilities {
+  /* Animation utilities */
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.3s ease-out;
+  }
+
+  .animate-pulse-subtle {
+    animation: pulseSutble 2s infinite;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes pulseSutble {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.7;
+    }
+  }
+}
